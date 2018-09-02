@@ -7,6 +7,10 @@
         </style>
     </head>
 <body>
+    //Setup section to route to base/index/blog page 
+
+    //Setup section to route to New Blog Post and New Blog Post page
+    
     <div><a href="./newpost">New Post</a></div>
     {% with messages = get_flashed_messages(with_categories=True) %}
     <ul>
@@ -16,6 +20,9 @@
         </li>
         {% endfor %}
     </ul>
+
+    //Setup Section to Header and contain previous blog posts
+    
     {% endwith %}
     {% block content %}
     {% endblock %}
