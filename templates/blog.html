@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{title_h1}}</h1>
+    {% if title_h1 != blog_posts.title %}
+        {% for posts in blog_posts %}
+            <h2>
+                {{posts.title}}
+            </h2>
+            <p>
+                {{posts.body[:50]}}
+            </p>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>
+            {{blog_posts.body}}
+        </p>
+    {% endif %}
+
+{% endblock %}
