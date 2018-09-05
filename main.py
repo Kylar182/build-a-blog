@@ -27,14 +27,14 @@ def home():
 @app.route('/blog', methods=['POST', 'GET'])
 def index():
     if request.args.get('id'):
-        blog_posts = Blog.query.filter_by('id').all()
+        blog_posts = Blog.query.filter_by(id=request.args.get('id')).all()
         title_h1 = blog_posts[0].title
         body = blog_posts[0].body
     else:
         blog_posts = Blog.query.filter_by().all()
         title_h1 = "Build a Blog"
         body = ''
-
+    print(title_h1)
     return render_template('blog.html', title_h1=title_h1, blog_posts=blog_posts, body=body)
 
 @app.route('/newpost', methods=['POST', 'GET'])

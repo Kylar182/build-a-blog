@@ -2,10 +2,10 @@
 
 {% block content %}
     <h1>{{title_h1}}</h1>
-    {% if title_h1 != blog_posts.title %}
+    {% if title_h1 == "Build a Blog" %}
         {% for posts in blog_posts %}
             <h2>
-                {{posts.title}}
+                <a href="/blog?id={{posts.id}}">{{posts.title}}</a>
             </h2>
             <p>
                 {{posts.body[:50]}}
@@ -14,7 +14,7 @@
         {% endfor %}
     {% else %}
         <p>
-            {{blog_posts.body}}
+            {{blog_posts[0].body}}
         </p>
     {% endif %}
 
