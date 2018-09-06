@@ -3,15 +3,28 @@
     <head>
         <title>{{title}}</title>
         <style>
+            .error {color: red}
             .big {height: 10vh; width: 20vw;}
+            .marginleft {margin: 2px%; float: left;}
+            .marginright {margin: 2px; float: right;}
         </style>
     </head>
 <body style="height: 100vh">
-    <div>
-    <a href="./blog">Main Blog Page</a>
-    <a href="./newpost">New Blog Post</a>
+    <div class="marginleft">
+        <a href="./blog">Main Blog Page</a>
     </div>
-
+    <div class="marginleft"></div>
+        <a href="./newpost">New Blog Post</a>
+    </div>
+    <div class="marginright">
+        <a href="./logout">Log Out</a>
+    </div>
+    
+    {% if email not in session %}
+    <div style="float: right">
+        <a href="./register">Register</a>
+    </div>
+    {% endif %}
     
     {% block content %}
     {% endblock %}
