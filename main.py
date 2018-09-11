@@ -33,7 +33,7 @@ class User(db.Model):
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
-    return redirect("/blog")
+    return redirect("/home")
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -88,9 +88,23 @@ def login():
 
     return render_template("login.html")
 
+@app.route('/singleuser')
+def spec_user():
+    if "id" in request.args:
+        user_id = request.args.get("id")
+        id = User.query.get(user_id)
+        user_blogs = Blog.query.filter_by(owner_id=user_id).all()
+        return render_template('singleuser.html', user_blogs=user_blogs, id=id, user_id=user_id)
+
+@app.route('/home', methods=['POST', 'GET'])
+def homie():
+    user_id = User.query.filter_by().all()
+    return render_template('home.html', user_id=user_id)
+
 @app.route('/blog', methods=['POST', 'GET'])
 def index():
     current_user = User.query.filter_by(email=session['email']).first()
+    spec_user = User.query.filter_by(email=session['email']).first()
     if request.args.get('id'):
         blog_posts = Blog.query.filter_by(id=request.args.get('id')).all()
         title_h1 = blog_posts[0].title

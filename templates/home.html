@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Bloggers</h1>
+    
+        {% for id in user_id %}
+            <h2>
+                <a href="/singleuser?id={{id.id}}">{{id.email}}</a>
+            </h2>
+
+
+        {% endfor %}
+
+
+{% endblock %}
